@@ -3,7 +3,7 @@ Kombinacija 5 za projekat iz predmeta Standardni korisnički interfejsi
 
 Zadaci projekta:
 Uputstva za projekat SKI-2022:
-**__Kombinacija 5__**
+**Kombinacija 5**
 
 ·         link ka galeriji slika (kreirati galeriju sa Vašim efektom odabiranja i pregleda slika).
 
