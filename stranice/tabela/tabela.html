@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKI PROJEKAT</title>
+  <link rel="stylesheet" href="tabelaStyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <nav>
+    <ul>
+      <li class="logo-link">
+        <a href="../../index.html">
+          <img alt="Home logo" id="navbar-logo" src="../../img/home.png">
+        </a>
+      </li>
+      <li><a href="../galerija/galerija.html">Galerija</a></li>
+      <li><a href="tabela.html">Tabela</a></li>
+      <li><a href="../asocijacije/asocijacije.html">Asocijacije</a></li>
+    </ul>
+  </nav>
+  
+  <table id="tabela">
+    <thead>
+      <tr>
+        <th data-sort="string">Ime</th>
+        <th data-sort="broj">Godine</th>
+        <th data-sort="string">Grad</th>
+        <th data-sort="string">Država</th>
+        <th data-sort="broj">Plata</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pera</td>
+        <td>30</td>
+        <td>Peking</td>
+        <td>Kina</td>
+        <td>4000</td>
+      </tr>
+      <tr>
+        <td>Filip</td>
+        <td>25</td>
+        <td>Pariz</td>
+        <td>Francuska</td>
+        <td>3000</td>
+      </tr>
+      <tr>
+        <td>Žika</td>
+        <td>35</td>
+        <td>Beograd</td>
+        <td>Srbija</td>
+        <td>600</td>
+      </tr>
+      <tr>
+        <td>Mica</td>
+        <td>28</td>
+        <td>Frankfurt</td>
+        <td>Nemačka</td>
+        <td>7000</td>
+      </tr>
+      <tr>
+        <td>Lela</td>
+        <td>42</td>
+        <td>Cirih</td>
+        <td>Švajcarska</td>
+        <td>8000</td>
+      </tr>
+    </tbody>
+  </table>
+      
+  <script>
+    const tabela = document.getElementById("tabela");
+    const telo = tabela.querySelector("tbody");
+    const thList = tabela.querySelectorAll("th");
+
+    function sortTable(e) {
+        const target = e.target;
+        const sortType = target.getAttribute("data-sort");
+        const trList = Array.from(telo.rows);
+
+        if (sortType === "broj") {
+            trList.sort((a, b) => {
+                const aValue = parseInt(a.cells[target.cellIndex].textContent, 10);
+                const bValue = parseInt(b.cells[target.cellIndex].textContent, 10);
+                return aValue - bValue;
+            });
+        } 
+        else {
+            trList.sort((a, b) => {
+                const aValue = a.cells[target.cellIndex].textContent.toLowerCase();
+                const bValue = b.cells[target.cellIndex].textContent.toLowerCase();
+                if (aValue < bValue) return -1;
+                if (aValue > bValue) return 1;
+                return 0;
+            });
+        }
+
+        while (telo.firstChild) {
+            telo.removeChild(telo.firstChild);
+        }
+
+        trList.forEach(tr => telo.appendChild(tr));
+    }
+
+    thList.forEach(th => th.addEventListener("click", sortTable));
+  </script>
+
+  <footer id="footer">
+    <div id="levi-futer">
+      <ul>Brzi linkovi:
+        <li>
+            <a id="prvi-link" href="../../index.html">Početna</a>
+        </li>
+        <li>
+          <a id="drugi-link" href="../galerija/galerija.html">Galerija</a>
+        </li>
+        <li>
+          <a id="treci-link" href="tabela.html">Tabela</a>
+        </li>
+        <li>
+          <a id="cetvrti-link" href="../asocijacije/asocijacije.html">Asocijacije</a>
+        </li>
+      </ul>
+    </div>
+    <div id="desni-futer">SKI projekat copyright 2023&copy;</div>
+  </footer>
+</body>
+</html>

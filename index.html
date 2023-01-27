@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SKI PROJEKAT</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet"> 
+</head>
+<body>
+  <nav>
+    <ul>
+      <li class="logo-link">
+        <a href="index.html">
+          <img alt="Home logo" id="navbar-logo" src="img/home.png">
+        </a>
+      </li>
+      <li><a href="stranice/galerija/galerija.html">Galerija</a></li>
+      <li><a href="stranice/tabela/tabela.html">Tabela</a></li>
+      <li><a href="stranice/asocijacije/asocijacije.html">Asocijacije</a></li>
+    </ul>
+  </nav>
+
+
+  
+  <div>
+    <div id="reklama-newsletter">
+      <div id="slajder">
+        <img src="img/reklama1.jpg" alt="Welcome">
+        <img src="img/reklama2.jpg" alt="Reklama1">
+        <img src="img/reklama3.jpg" alt="Reklama2">
+        <button class="prethodni">&laquo;</button>
+        <button class="sledeci">&raquo;</button>
+      </div>
+      <script>
+      var slajdovi = document.querySelectorAll('#slajder img');
+      var trenutniSlajd = 0;
+    
+      slajdovi[trenutniSlajd].classList.add('active');
+    
+      var slajdInterval = setInterval(sledeciSlajd,5000);
+    
+      function sledeciSlajd() {
+        slajdovi[trenutniSlajd].classList.remove('active');
+        trenutniSlajd = (trenutniSlajd+1)%slajdovi.length;
+        slajdovi[trenutniSlajd].classList.add('active');
+      }
+    
+      function prethodniSlajd() {
+        slajdovi[trenutniSlajd].classList.remove('active');
+        trenutniSlajd = (trenutniSlajd - 1 + slajdovi.length) % slajdovi.length;
+        slajdovi[trenutniSlajd].classList.add('active');
+      }
+    
+      var prevButton = document.querySelector('#slajder .prethodni');
+      var nextButton = document.querySelector('#slajder .sledeci');
+    
+      prevButton.addEventListener('click', function() {
+        clearInterval(slajdInterval);
+        prethodniSlajd();
+        slajdInterval = setInterval(sledeciSlajd,5000);
+      });
+    
+      nextButton.addEventListener('click', function() {
+        clearInterval(slajdInterval);
+        sledeciSlajd();
+        slajdInterval = setInterval(sledeciSlajd,5000);
+      });
+    
+      </script>
+      <form id="news-forma">
+        <label id="news-labela" for="email">Prijavite se na moj newsletter!</label><br>
+        <input class="newsletter-unos" type="email" id="email" placeholder="Unesite Vašu e-mail adresu...">
+        <button id="news-dugme" type="submit">Prijava</button>
+      </form><br><br>
+    </div><br>
+  </div><br>
+
+  <section id="omeni">
+    <div id="levi">
+      <h2 id="omeninaslov">O meni</h2><br/>
+      <p>Zdravo, moje ime je Boško Marković i ja sam student Visoke Škole elektrotehnike i računarstva. Smer koji pohađam se zove Računarska tehnika i trenutno 
+        na drugoj godini studija. Volim da učim programiranje i u slobodno vreme se bavim Web dizajnom i Web programiranjem.
+      </p>
+    </div>
+    <div id="desni">
+      <h1 id="zadacinaslov">Zadaci ovog sajta</h1>
+      <h2 id="podnaslov">Moja kombinacija 5 sadrži sledeće zahteve:</h2>
+      <h3 class="zadaci">Galerija slika</h3>
+      <h3 class="zadaci">Tabela sa sortiranjem</h3>
+      <h3 class="zadaci">Asocijacije za 2 igrača</h3>
+    </div>
+  </section>
+
+  <div id="clanak">
+    <div id="umotvorina">
+      <h2>If everything seems under control, you're not going fast enough</h2>
+      <h3><i>~Mario Andretti</i></h3>
+    </div>
+  </div>
+  <script>
+    const umotvorine = [
+      "<h2>Silence is the virtue of fools.</h2><br/><h3><i>~Sir Francis Bacon (1561 - 1626)</i></h3>",
+      "<h2>Nothing is said that has not been said before.</h2><br/><h3><i>~Terrence(185BC - 159BC)</i></h3>",
+      "<h2>There is no monument dedicated to the memory of a committee.</h2><br/><h3><i>~Lester J. Pourciau</i></h3>",
+      "<h2>We cannot really love anybody with whom we never laugh.</h2><br/><h3><i>~Agnes Repplier (1855 - 1950)</i></h3>",
+      "<h2>Hate no one; hate their vices, not themselves.</h2><br/><h3><i>~J. G. C. Brainard</i></h3>"
+    ];
+
+    function dodajUmotvorinu() {
+      const indexUmotvorine = Math.floor(Math.random() * umotvorine.length);
+      document.getElementById("umotvorina").innerHTML = umotvorine[indexUmotvorine];
+    }
+
+    setInterval(dodajUmotvorinu, 10000);
+  </script>
+
+  <footer id="footer">
+    <div id="levi-futer">
+      <ul>Brzi linkovi:
+        <li>
+            <a id="prvi-link" href="index.html">Početna</a>
+        </li>
+        <li>
+          <a id="drugi-link" href="stranice/galerija/galerija.html">Galerija</a>
+        </li>
+        <li>
+          <a id="treci-link" href="stranice/tabela/tabela.html">Tabela</a>
+        </li>
+        <li>
+          <a id="cetvrti-link" href="stranice/asocijacije/asocijacije.html">Asocijacije</a>
+        </li>
+      </ul>
+    </div>
+    <div id="desni-futer">SKI projekat copyright 2023&copy;</div>
+  </footer>
+</body>
+</html>
